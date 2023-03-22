@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LAB03ISHCHENKO.Models.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LAB03ISHCHENKO
+namespace LAB03ISHCHENKO.Models
 {
     internal class Person
     {
@@ -68,51 +69,51 @@ namespace LAB03ISHCHENKO
             int month = DateOfBirth.Month;
             int day = DateOfBirth.Day;
 
-            if ((month == 3 && day >= 21) || (month == 4 && day <= 19))
+            if (month == 3 && day >= 21 || month == 4 && day <= 19)
             {
                 return "Овен";
             }
-            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20))
+            else if (month == 4 && day >= 20 || month == 5 && day <= 20)
             {
                 return "Телець";
             }
-            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20))
+            else if (month == 5 && day >= 21 || month == 6 && day <= 20)
             {
                 return "Близнюки";
             }
-            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22))
+            else if (month == 6 && day >= 21 || month == 7 && day <= 22)
             {
                 return "Рак";
             }
-            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22))
+            else if (month == 7 && day >= 23 || month == 8 && day <= 22)
             {
                 return "Лев";
             }
-            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22))
+            else if (month == 8 && day >= 23 || month == 9 && day <= 22)
             {
                 return "Діва";
             }
-            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22))
+            else if (month == 9 && day >= 23 || month == 10 && day <= 22)
             {
                 return "Терези";
             }
-            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21))
+            else if (month == 10 && day >= 23 || month == 11 && day <= 21)
             {
                 return "Скорпіон";
             }
-            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21))
+            else if (month == 11 && day >= 22 || month == 12 && day <= 21)
             {
                 return "Стрілець";
             }
-            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19))
+            else if (month == 12 && day >= 22 || month == 1 && day <= 19)
             {
                 return "Козоріг";
             }
-            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18))
+            else if (month == 1 && day >= 20 || month == 2 && day <= 18)
             {
                 return "Водолій";
             }
-            else if ((month == 2 && day >= 19) || (month == 3 && day <= 20))
+            else if (month == 2 && day >= 19 || month == 3 && day <= 20)
             {
                 return "Риби";
             }

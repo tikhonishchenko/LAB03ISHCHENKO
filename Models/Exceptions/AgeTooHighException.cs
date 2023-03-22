@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LAB03ISHCHENKO
+namespace LAB03ISHCHENKO.Models.Exceptions
 {
     internal class AgeTooHighException : Exception
     {

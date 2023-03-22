@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LAB03ISHCHENKO.Models;
+using LAB03ISHCHENKO.Models.Exceptions;
+using LAB03ISHCHENKO.ViewModels;
 
 namespace LAB03ISHCHENKO
 {
@@ -41,7 +44,7 @@ namespace LAB03ISHCHENKO
 
         private void ProceedButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!CalculateAge() || !Person.IsValidEmail(Email.Text))
+            if (!ViewModel.CalculateAge(DatePicker.SelectedDate) || !Person.IsValidEmail(Email.Text))
             {
                 return;
             }
@@ -58,31 +61,7 @@ namespace LAB03ISHCHENKO
 
 
         }
-        private bool CalculateAge()
-        {
-            DateTime? birthDate = DatePicker.SelectedDate;
-            if (birthDate != null)
-            {
-                DateTime today = DateTime.Today;
-                int age = today.Year - birthDate.Value.Year;
-                if (birthDate > today.AddYears(-age)) age--;
-                if (age > 135)
-                {
-                    throw new AgeTooLowException("Та ти точно не такий старий, давай пиши справжній");
-                }
-                else if (age < 0)
-                {
-                    throw new AgeTooHighException("Та ти точно не такий молодий, давай пиши справжній");
-                }
-                else
-                {
-                    if (birthDate.Value.Month == today.Month && birthDate.Value.Day == today.Day)
-                        MessageBox.Show("З днем народження!");
-                    return true;
-                }
-            }
-            return false;
-        }
+        
         private void FirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (FirstName.Text.Length > 0 && LastName.Text.Length > 0 && Email.Text.Length > 0 && DatePicker.SelectedDate != null)
