@@ -18,19 +18,30 @@ namespace LAB03ISHCHENKO.ViewModels
                 DateTime today = DateTime.Today;
                 int age = today.Year - birthDate.Value.Year;
                 if (birthDate > today.AddYears(-age)) age--;
-                if (age > 135)
+                try
                 {
-                    throw new AgeTooLowException("Та ти точно не такий старий, давай пиши справжній");
+                    if (age > 135)
+                    {
+                        throw new AgeTooLowException("Та ти точно не такий старий, давай пиши справжній");
+                    }
+                    else if (age < 0)
+                    {
+                        throw new AgeTooHighException("Та ти точно не такий молодий, давай пиши справжній");
+                    }
+                    else
+                    {
+                        if (birthDate.Value.Month == today.Month && birthDate.Value.Day == today.Day)
+                            MessageBox.Show("З днем народження!");
+                        return true;
+                    }
                 }
-                else if (age < 0)
+                catch (AgeTooLowException atl)
                 {
-                    throw new AgeTooHighException("Та ти точно не такий молодий, давай пиши справжній");
+                    MessageBox.Show("AgeTooLowException");
                 }
-                else
+                catch (AgeTooHighException ath)
                 {
-                    if (birthDate.Value.Month == today.Month && birthDate.Value.Day == today.Day)
-                        MessageBox.Show("З днем народження!");
-                    return true;
+                    MessageBox.Show("AgeTooHighException");
                 }
             }
             return false;

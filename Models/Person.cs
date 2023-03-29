@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace LAB03ISHCHENKO.Models
 {
@@ -166,8 +167,17 @@ namespace LAB03ISHCHENKO.Models
 
         internal static bool IsValidEmail(string text)
         {
-            if (string.IsNullOrWhiteSpace(text) || !text.Contains("@") || !text.Contains(".") || text.IndexOf("@") > text.LastIndexOf("."))
-                throw new InvalidEmailException("Неправильний формат електронної пошти");
+            try
+            {
+
+                if (string.IsNullOrWhiteSpace(text) || !text.Contains("@") || !text.Contains(".") || text.IndexOf("@") > text.LastIndexOf("."))
+                    throw new InvalidEmailException("Неправильний формат електронної пошти");
+            }
+            catch (InvalidEmailException iee)
+            {
+                MessageBox.Show("InvalidEmailException");
+                return false;
+            }
             return true;
         }
     }
